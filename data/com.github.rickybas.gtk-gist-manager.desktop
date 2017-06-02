@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Gtk Gist Manager
+GenericName=Gtk Gist Manager
+Comment=Gtk Gist viewer and creator
+Categories=GTK;Utility;
+Exec=com.github.rickybas.gtk-gist-manager
+Icon=com.github.rickybas.gtk-gist-manager
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=Gtk Gist Manager
+X-GNOME-Keywords=Gtk;Gist;Manager;Github;Code;Editor;

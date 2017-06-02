@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.rickybas.gtk-gist-manager</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0+</project_license>
+    <name>Gtk Gist Manager</name>
+    <summary>Gtk Gist viewer and creator</summary>
+    <description>
+        <p>Gtk Gist viewer and creator</p>
+	<ul>
+            <li>View gists</li>
+            <li>Create gists</li>
+        </ul>
+    </description>
+    <provides>
+        <binary>com.github.rickybas.gtk-gist-manager</binary>
+    </provides>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/rickybas/gtk-gist-manager/master/data/screenshot.png</image>
+        </screenshot>
+    </screenshots>
+    <developer_name>Ricky Bassom</developer_name>
+    <url type="homepage">https://github.com/rickybas/gtk-gist-manager</url>
+    <url type="bugtracker">https://github.com/rickybas/gtk-gist-manager/issues</url>
+</component>
