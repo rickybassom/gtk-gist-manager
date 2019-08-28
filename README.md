@@ -22,3 +22,20 @@ cd build
 ninja # or 'ninja-build' on some distributions
 sudo ninja install
 ```
+
+## Flatpak
+(currently without a repo)
+
+### Build
+
+```sh
+flatpak-builder build-dir com.github.rickybas.gtk-gist-manager.json
+```
+
+### Run
+
+```sh
+flatpak-builder --run build-dir com.github.rickybas.gtk-gist-manager.json com.github.rickybas.gtk-gist-manager
+```
+
+
