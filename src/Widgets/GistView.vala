@@ -41,6 +41,7 @@ namespace GtkGistManager {
             gist_options_button = new Gtk.MenuButton();
 
             action_bar = new Gtk.ActionBar();
+            action_bar.get_style_context ().add_class ("action-bar");
             if (can_edit) action_bar.pack_start(edit_button);
             action_bar.pack_end(gist_options_button);
             action_bar.pack_end(public_check);

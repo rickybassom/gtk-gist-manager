@@ -25,15 +25,26 @@ namespace GtkGistManager {
 		    page_switcher.show_all ();
         }
 
-        public void load(){
-            gists = profile.list_all();
-            set_gists(gists);
-            page_switcher.show_all ();
+        public async Gist[] list_all () {
+            SourceFunc callback = list_all.callback;
+            Gist[] output = null;
+
+            ThreadFunc<bool> run = () => {
+                output = profile.list_all ();
+                Idle.add((owned) callback);
+                return true;
+            };
+            new Thread<bool>("thread-example", run);
+
+            // Wait for background thread to schedule our callback
+            yield;
+            return output;
         }
 
         public void set_gists(Gist[] gists){
             page_switcher.remove_all ();
-	        set_gists_widgets(gists);
+	        set_gists_widgets (gists);
+	        page_switcher.show_all ();
         }
 
         private void set_gists_widgets(Gist[] gists){

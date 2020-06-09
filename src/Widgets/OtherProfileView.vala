@@ -21,10 +21,8 @@ namespace GtkGistManager {
             page_switcher.show_all ();
         }
 
-        public void load(){
-            gists = profile.list_all();
-            set_gists(gists);
-            page_switcher.show_all ();
+        public async Gist[] list_all () {
+            return null;
         }
 
         public void set_gists(Gist[] gists){

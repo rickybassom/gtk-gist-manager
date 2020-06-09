@@ -6,7 +6,7 @@ namespace GtkGistManager {
 
         public abstract Gist[] gists { get; set; }
         public abstract bool editable{ get; set; }
-        public abstract void load();
+        public abstract async Gist[] list_all();
 
         public abstract PageSwitcher page_switcher { get; set; }
     }
