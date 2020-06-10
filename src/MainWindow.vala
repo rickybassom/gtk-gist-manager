@@ -54,17 +54,24 @@ namespace GtkGistManager {
                 }
             });
 
+            headerbar.logout_clicked.connect (() => {
+                Utils.store_token ("");
+                switch_to_welcome_view ();
+            });
+
             set_titlebar(headerbar);
 
             // all app views
             loading_view = new LoadingView ();
-            welcome_screen_view = new WelcomeView();
+            welcome_screen_view = new WelcomeView (Utils.get_token ());
             my_profile_view = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             other_profile_view = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             welcome_screen_view.login_button_clicked.connect((token) => {
                 if (!attempt_to_add_my_profile_view (token)) {
                     message("Login failed");
+                } else {
+                    Utils.store_token (token);
                 }
             });
 
@@ -110,14 +117,14 @@ namespace GtkGistManager {
         public bool attempt_to_add_my_profile_view (string token) {
             if (token == ""){
                 Utils.log_message ("No stored token");
-                switch_welcome_screen ();
+                switch_to_welcome_view ();
                 return false;
             }else{
                 try {
                     my_profile = login_manager.login (token);
                 }catch(ValaGist.Error e) {
                     message ("Could not login");
-                    switch_welcome_screen();
+                    switch_to_welcome_view();
                     return false;
                 }
 
@@ -159,7 +166,7 @@ namespace GtkGistManager {
             stack.set_visible_child (other_profile_view);
         }
 
-        public void switch_welcome_screen () {
+        public void switch_to_welcome_view () {
             my_profile = null;
             headerbar.disable_headerbar_functions ();
             stack.set_visible_child (welcome_screen_view);

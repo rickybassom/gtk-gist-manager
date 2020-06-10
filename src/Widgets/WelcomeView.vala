@@ -6,13 +6,14 @@ class WelcomeView : Gtk.Box {
 
     public signal void login_button_clicked (string token);
 
-    public WelcomeView() {
+    public WelcomeView (string token) {
         this.set_orientation(Gtk.Orientation.VERTICAL);
         this.margin = 15;
 
         token_entry = new Gtk.Entry();
         token_entry.margin = 10;
         token_entry.set_placeholder_text("Token");
+        token_entry.set_text (token);
 
         login_button = new Gtk.Button.with_label("Login");
         login_button.margin = 10;
