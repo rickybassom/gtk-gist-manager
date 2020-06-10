@@ -47,10 +47,13 @@ namespace GtkGistManager {
         }
 
         public void load_content(){
-            new GLib.Thread<void*>("file-processor", () => {
-                file_text_view.set_text(file.get_content(true));
+            /*new GLib.Thread<void*>("file-processor", () => {
+                var a = file.get_content (true);
+                file_text_view.set_text (a);
                 return null;
-            });
+            });*/
+            var a = file.get_content (true);
+            file_text_view.set_text (a);
         }
 
     }

@@ -2,41 +2,41 @@ namespace GtkGistManager {
 
 	public class NewGistPopover : Gtk.Popover {
         private Gtk.Box layout_box;
-        private Gtk.Entry content_input;
+        private Gtk.Entry description_input;
         private Gtk.Button confirm_button;
+        private Gtk.Button add_file_button;
+        private GistView new_gist_wid;
 
-        public signal void create_gist (string content);
+        public signal void create_gist (ValaGist.Gist new_gist);
 
         public NewGistPopover (Gtk.Widget widget) {
             Object (relative_to: widget);
 
+            set_size_request (500, 500);
+
             layout_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-            content_input = new Gtk.Entry();
-            confirm_button = new Gtk.Button.with_label("Create new gist");
             layout_box.margin = 12;
-
-            content_input.editable = true;
-            content_input.set_placeholder_text("Gist");
-            content_input.activate.connect(() => {
-                create_gist(content_input.get_text());
-                content_input.set_text("");
-                this.hide();
-            });
-
-            confirm_button.clicked.connect(() => {
-                create_gist(content_input.get_text());
-                content_input.set_text("");
-                this.hide();
-            });
 
             Gtk.Separator separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
 
-            layout_box.pack_start(content_input);
-            layout_box.pack_start(confirm_button);
-            layout_box.pack_start (separator, true, true, 0);
+            refresh ();
+
+            layout_box.pack_start (separator, false, false, 0);
+            layout_box.pack_start(confirm_button, false, false, 0);
 
             this.child = layout_box;
             show_all ();
+        }
+
+        public void refresh () {
+            ValaGist.Gist new_gist = new ValaGist.Gist ("asdas", false, {new ValaGist.GistFile("file_name.txt", "123456")});
+            new_gist_wid = new GistView(new_gist, true);
+            new_gist_wid.toggle_is_editable ();
+            new_gist_wid.edited.connect((gist) => {
+                create_gist(gist);
+                this.hide();
+            });
+            layout_box.pack_start (new_gist_wid, true, true, 0);
         }
 	}
 }

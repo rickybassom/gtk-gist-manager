@@ -46,11 +46,11 @@ namespace GtkGistManager {
                 }
             });
 
-            headerbar.new_gist.connect (() => {
+            headerbar.new_gist.connect ((gist) => {
                 if (my_profile == null) {
                     Utils.log_warning ("Account details not entered");
                 } else {
-                    // my_profile.create ();
+                    my_profile.create (gist);
                 }
             });
 
@@ -139,26 +139,30 @@ namespace GtkGistManager {
             my_profile_view_inner = new MyProfileView(my_profile);
             my_profile_view.forall ((element) => my_profile_view.remove (element));
             my_profile_view.add (my_profile_view_inner.page_switcher);
+            my_profile_view_inner.edited.connect(()=>{
+                switch_to_my_profile_view ();
+            });
 
             stack.set_visible_child (my_profile_view);
 
             if (my_profile == null) {
                 Utils.log_warning ("Account details not entered");
             } else {
-                my_profile_view_inner.list_all.begin((obj, res) => {
-                    try {
-                        Gist[] result = my_profile_view_inner.list_all.end(res);
-                        my_profile_view_inner.set_gists (result);
-                    } catch (ThreadError e) {
-                        string msg = e.message;
-                        stderr.printf(@"Thread error: $msg\n");
-                    }
-                });
+                Gist[] result = my_profile_view_inner.list_all();
+                my_profile_view_inner.set_gists (result);
             }
-            print("end -------------");
+
             while(Gtk.events_pending()) {
                 Gtk.main_iteration();
             }
+
+            /*my_profile_view_inner.clicked.connect(()=>{
+                my_profile_view_inner.page_switcher.sidebar.sidebar_list.sensitive = false;
+            });
+
+            my_profile_view_inner.unclicked.connect(()=>{
+                my_profile_view_inner.page_switcher.sidebar.sidebar_list.sensitive = true;
+            });*/
         }
 
         public void switch_to_other_profile_view () {

@@ -21,7 +21,7 @@ namespace GtkGistManager {
             page_switcher.show_all ();
         }
 
-        public async Gist[] list_all () {
+        public Gist[] list_all () {
             return null;
         }
 

@@ -13,7 +13,7 @@ namespace GtkGistManager {
         public signal void refresh_clicked ();
         public signal void logout_clicked ();
         public signal void new_button_clicked ();
-        public signal void new_gist (string content);
+        public signal void new_gist (ValaGist.Gist new_gist);
 
         public HeaderBar (MainWindow window) {
             this.show_close_button = true;
@@ -54,7 +54,7 @@ namespace GtkGistManager {
                 logout_clicked ();
             });
 
-            this.set_custom_title (search_bar);
+            // this.set_custom_title (search_bar);
 
             search_grid = new Gtk.Grid ();
             search_grid.set_column_spacing (10);

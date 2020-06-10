@@ -13,7 +13,6 @@ namespace GtkGistManager {
         private Gtk.Button edit_button;
         private Gtk.CheckButton public_check;
         private Gtk.Entry description_entry;
-        private Gtk.MenuButton gist_options_button;
 
         public GistView (ValaGist.Gist gist, bool can_edit) {
             this.gist = gist;
@@ -38,12 +37,9 @@ namespace GtkGistManager {
             description_entry.set_editable(false);
             description_entry.set_text(gist.description);
 
-            gist_options_button = new Gtk.MenuButton();
-
             action_bar = new Gtk.ActionBar();
             action_bar.get_style_context ().add_class ("action-bar");
             if (can_edit) action_bar.pack_start(edit_button);
-            action_bar.pack_end(gist_options_button);
             action_bar.pack_end(public_check);
             action_bar.pack_end(description_entry);
 
@@ -86,7 +82,9 @@ namespace GtkGistManager {
                 int count = 0;
                 foreach(FileView file_v in file_view){
                     print(file_v.get_content());
-                    gist.files[count].edit_file_content(file_v.get_content());
+                    // file_v.file_text_view.set_text (file_v.get_content ());
+                    gist.files[count].edit_file_content(file_v.get_content ());
+
                     count+=1;
                 }
                 edited(gist);
