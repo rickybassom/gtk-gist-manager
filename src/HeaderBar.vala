@@ -7,9 +7,11 @@ namespace GtkGistManager {
         private Gtk.Popover search_pop;
         private Gtk.Button new_button;
         private Gtk.Button refresh_button;
+        private Gtk.Button logout_button;
         private NewGistPopover new_gist_popover;
 
         public signal void refresh_clicked ();
+        public signal void logout_clicked ();
         public signal void new_button_clicked ();
         public signal void new_gist (string content);
 
@@ -32,6 +34,7 @@ namespace GtkGistManager {
 
             refresh_button = new Gtk.Button.from_icon_name ("view-refresh-symbolic");
             refresh_button.margin_start = 18;
+            refresh_button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
             refresh_button.clicked.connect(() => {
                 Utils.log_message ("Refresh clicked");
@@ -41,6 +44,15 @@ namespace GtkGistManager {
             search_bar = new Gtk.SearchEntry ();
             search_bar.set_placeholder_text ("Search");
             search_bar.width_chars = 50;
+
+            logout_button = new Gtk.Button.with_label ("Logout");
+            logout_button.margin_start = 18;
+            logout_button.get_style_context().add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+            logout_button.clicked.connect(() => {
+                Utils.log_message ("Logout clicked");
+                logout_clicked ();
+            });
 
             this.set_custom_title (search_bar);
 
@@ -64,6 +76,7 @@ namespace GtkGistManager {
             });
 
             this.pack_start (new_button);
+            this.pack_end (logout_button);
             this.pack_end (refresh_button);
 
             show_all ();
@@ -74,12 +87,14 @@ namespace GtkGistManager {
             new_button.set_sensitive (false);
             search_bar.set_sensitive (false);
             refresh_button.set_sensitive (false);
+            logout_button.set_sensitive (false);
         }
 
         public void enable_headerbar_functions () {
             new_button.set_sensitive (true);
             search_bar.set_sensitive (true);
             refresh_button.set_sensitive (true);
+            logout_button.set_sensitive (true);
         }
 
         public void open_new_gist_popover () {

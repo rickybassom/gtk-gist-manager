@@ -20,8 +20,8 @@ namespace GtkGistManager {
                 icon_name: "com.github.rickybas.gtk-gist-manager",
                 resizable: true,
                 title: _("Gtk Gist Manager"),
-                width_request: 1200,
-                height_request: 800
+                width_request: 1000,
+                height_request: 600
             );
         }
 
@@ -35,19 +35,7 @@ namespace GtkGistManager {
             headerbar = new HeaderBar(this);
 
             headerbar.refresh_clicked.connect (() => {
-                if (my_profile == null) {
-                    Utils.log_warning ("Account details not entered");
-                } else {
-                    my_profile_view_inner.list_all.begin((obj, res) => {
-                        try {
-                            Gist[] result = my_profile_view_inner.list_all.end(res);
-                            my_profile_view_inner.set_gists (result);
-                        } catch (ThreadError e) {
-                            string msg = e.message;
-                            stderr.printf(@"Thread error: $msg\n");
-                        }
-                    });
-                }
+                switch_to_my_profile_view ();
             });
 
             headerbar.new_button_clicked.connect (() => {
@@ -92,6 +80,9 @@ namespace GtkGistManager {
 
             // if stored details then go to profile view else login view
             attempt_to_add_my_profile_view (Utils.get_token ());
+
+            var settings = Gtk.Settings.get_default ();
+            settings.set_property ("gtk-application-prefer-dark-theme", true);
 
             show_all ();
         }
@@ -143,6 +134,24 @@ namespace GtkGistManager {
             my_profile_view.add (my_profile_view_inner.page_switcher);
 
             stack.set_visible_child (my_profile_view);
+
+            if (my_profile == null) {
+                Utils.log_warning ("Account details not entered");
+            } else {
+                my_profile_view_inner.list_all.begin((obj, res) => {
+                    try {
+                        Gist[] result = my_profile_view_inner.list_all.end(res);
+                        my_profile_view_inner.set_gists (result);
+                    } catch (ThreadError e) {
+                        string msg = e.message;
+                        stderr.printf(@"Thread error: $msg\n");
+                    }
+                });
+            }
+            print("end -------------");
+            while(Gtk.events_pending()) {
+                Gtk.main_iteration();
+            }
         }
 
         public void switch_to_other_profile_view () {

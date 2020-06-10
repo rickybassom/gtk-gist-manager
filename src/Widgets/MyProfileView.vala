@@ -43,8 +43,7 @@ namespace GtkGistManager {
 
         public void set_gists(Gist[] gists){
             page_switcher.remove_all ();
-	        set_gists_widgets (gists);
-	        page_switcher.show_all ();
+            set_gists_widgets (gists);
         }
 
         private void set_gists_widgets(Gist[] gists){
@@ -65,6 +64,7 @@ namespace GtkGistManager {
                     }
                 });
             }
+            page_switcher.show_all ();
         }
 
     }
