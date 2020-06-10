@@ -1,5 +1,5 @@
 project('com.github.rickybas.gtk-gist-manager', ['vala', 'c'],
-        version: '1.0.0-dev',
+        version: '0.1',
         license: 'GNU')
 
 version = '1.0'

@@ -38,6 +38,7 @@ namespace GtkGistManager {
             description_entry.set_text(gist.description);
 
             action_bar = new Gtk.ActionBar();
+            action_bar.margin = 10;
             action_bar.get_style_context ().add_class ("action-bar");
             if (can_edit) action_bar.pack_start(edit_button);
             action_bar.pack_end(public_check);

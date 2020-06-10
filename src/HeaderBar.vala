@@ -7,6 +7,7 @@ namespace GtkGistManager {
         private Gtk.Popover search_pop;
         private Gtk.Button new_button;
         private Gtk.Button refresh_button;
+        private Gtk.Button web_button;
         private Gtk.Button logout_button;
         private NewGistPopover new_gist_popover;
 
@@ -39,6 +40,13 @@ namespace GtkGistManager {
             refresh_button.clicked.connect(() => {
                 Utils.log_message ("Refresh clicked");
                 refresh_clicked ();
+            });
+
+            web_button = new Gtk.Button.with_label ("Web");
+            web_button.set_sensitive (false);
+            web_button.clicked.connect(() =>{
+                Gtk.show_uri_on_window(null, "https://gist.github.com",
+                                   Gdk.CURRENT_TIME);
             });
 
             search_bar = new Gtk.SearchEntry ();
@@ -77,6 +85,7 @@ namespace GtkGistManager {
 
             this.pack_start (new_button);
             this.pack_end (logout_button);
+            this.pack_end (web_button);
             this.pack_end (refresh_button);
 
             show_all ();
@@ -88,6 +97,7 @@ namespace GtkGistManager {
             search_bar.set_sensitive (false);
             refresh_button.set_sensitive (false);
             logout_button.set_sensitive (false);
+            web_button.set_sensitive (false);
         }
 
         public void enable_headerbar_functions () {
@@ -95,6 +105,7 @@ namespace GtkGistManager {
             search_bar.set_sensitive (true);
             refresh_button.set_sensitive (true);
             logout_button.set_sensitive (true);
+            web_button.set_sensitive (true);
         }
 
         public void open_new_gist_popover () {

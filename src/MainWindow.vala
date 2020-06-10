@@ -88,8 +88,8 @@ namespace GtkGistManager {
             // if stored details then go to profile view else login view
             attempt_to_add_my_profile_view (Utils.get_token ());
 
-            var settings = Gtk.Settings.get_default ();
-            settings.set_property ("gtk-application-prefer-dark-theme", true);
+            // var settings = Gtk.Settings.get_default ();
+            // settings.set_property ("gtk-application-prefer-dark-theme", true);
 
             show_all ();
         }
