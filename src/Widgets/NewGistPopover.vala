@@ -19,24 +19,29 @@ namespace GtkGistManager {
 
             Gtk.Separator separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
 
-            refresh ();
-
-            layout_box.pack_start (separator, false, false, 0);
-            layout_box.pack_start(confirm_button, false, false, 0);
+            closed.connect (()=>{
+                refresh ();
+                show_all ();
+            });
 
             this.child = layout_box;
             show_all ();
         }
 
         public void refresh () {
-            ValaGist.Gist new_gist = new ValaGist.Gist ("asdas", false, {new ValaGist.GistFile("file_name.txt", "123456")});
-            new_gist_wid = new GistView(new_gist, true);
-            new_gist_wid.toggle_is_editable ();
-            new_gist_wid.edited.connect((gist) => {
+            layout_box.foreach ((element) => layout_box.remove (element));
+
+            ValaGist.Gist new_gist = new ValaGist.Gist ("", false, {new ValaGist.GistFile("file_name.txt", "")});
+            new_gist_wid = new GistView(new_gist, true, true);
+            new_gist_wid.toggle_is_editable (true);
+            new_gist_wid.edited.connect ((source, gist) => {
                 create_gist(gist);
                 this.hide();
+                // refresh ();
+                // show_all ();
             });
-            layout_box.pack_start (new_gist_wid, true, true, 0);
+
+            layout_box.pack_start (new_gist_wid, true, true, 6);
         }
 	}
 }

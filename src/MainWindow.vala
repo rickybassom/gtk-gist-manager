@@ -1,5 +1,6 @@
 using ValaGist;
 
+
 namespace GtkGistManager {
 
     public class MainWindow : Gtk.ApplicationWindow {
@@ -46,11 +47,13 @@ namespace GtkGistManager {
                 }
             });
 
-            headerbar.new_gist.connect ((gist) => {
+            headerbar.new_gist.connect ((source, gist) => {
+                print ("\n\n\n" + gist.files[0].file_content + "\n\n\n");
                 if (my_profile == null) {
                     Utils.log_warning ("Account details not entered");
                 } else {
                     my_profile.create (gist);
+                    switch_to_my_profile_view ();
                 }
             });
 
