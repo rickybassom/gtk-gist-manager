@@ -25,7 +25,6 @@ namespace GtkGistManager {
             new_gist_popover = new NewGistPopover (new_button);
             new_gist_popover.set_visible (false);
             new_gist_popover.create_gist.connect ((source, gist) => {
-                print ("\n\n\n" + gist.files[0].filename + "\n\n\n");
                 new_gist (gist);
             });
 

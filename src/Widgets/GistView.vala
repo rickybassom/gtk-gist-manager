@@ -35,6 +35,7 @@ namespace GtkGistManager {
             description_entry.set_placeholder_text("Description");
             description_entry.set_hexpand(true);
             description_entry.set_editable(false);
+            description_entry.can_focus = false;
             description_entry.set_text(gist.description);
 
             add_file_button = new Gtk.Button.with_label("Add file");
@@ -72,21 +73,25 @@ namespace GtkGistManager {
             is_editable = !is_editable;
             if(is_editable){
                 description_entry.set_editable (true);
+                description_entry.can_focus = true;
                 if (create) public_check.set_sensitive (true);
                 add_file_button.set_sensitive (true);
                 foreach(FileView file in file_view){
                     file.toggle_editable();
                 }
-                edit_button.set_label("Save");
+
+                edit_button.set_label ("Save");
                 edit_button.get_style_context().remove_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
                 edit_button.get_style_context().add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             }else{
                 description_entry.set_editable(false);
+                description_entry.can_focus = false;
                 add_file_button.set_sensitive (false);
                 foreach(FileView file in file_view){
                     file.toggle_editable();
                 }
+
                 edit_button.set_label("Edit");
                 edit_button.get_style_context().remove_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 edit_button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
@@ -103,13 +108,9 @@ namespace GtkGistManager {
                     return;
                 }
 
-                gist.edit_description(get_description());
+                gist.edit_description (get_description());
                 int count = 0;
                 foreach(FileView file_v in file_view){
-                    print ("-------------------\n");
-                    print (file_v.get_name ());
-                    print (file_v.get_content ());
-                    print ("------------------\n");
                     gist.files[count].edit_filename (file_v.get_name ());
                     gist.files[count].edit_file_content (file_v.get_content ());
 

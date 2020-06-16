@@ -10,11 +10,10 @@ namespace GtkGistManager {
 
 		public FileTextView(string file_text){
 			source_manager = Gtk.SourceLanguageManager.get_default();
-	        language = source_manager.guess_language(null, "text/x-markdown");
-	        source_buffer = new Gtk.SourceBuffer.with_language(language);
+	        source_view = new Gtk.SourceView ();
+	        source_buffer = (Gtk.SourceBuffer) source_view.buffer;
 	        set_text(file_text);
 
-	        source_view = new Gtk.SourceView.with_buffer(source_buffer);
 	        source_view.editable = false;
 
 	        source_view.left_margin = 5;

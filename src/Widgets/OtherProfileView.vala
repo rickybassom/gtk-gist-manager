@@ -1,3 +1,7 @@
+/*
+ * STILL UNDER DEVELOPMENT
+ */
+
 using ValaGist;
 
 namespace GtkGistManager {

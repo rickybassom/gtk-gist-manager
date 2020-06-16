@@ -20,12 +20,12 @@ namespace GtkGistManager {
             name_entry = new Gtk.Entry();
             name_entry.set_text (file.filename);
             name_entry.editable = false;
+            name_entry.can_focus = false;
             name_entry.margin_bottom = 5;
             this.pack_start(name_entry, false);
         }
 
         public string get_name(){
-            print (name_entry.get_text ());
             return name_entry.get_text ();
         }
 
@@ -36,6 +36,7 @@ namespace GtkGistManager {
 		public void toggle_editable(){
 		    file_text_view.toggle_editable();
 		    name_entry.editable = !name_entry.editable;
+		    name_entry.can_focus = !name_entry.can_focus;
 		}
 
 		public string get_content(){
@@ -43,13 +44,14 @@ namespace GtkGistManager {
         }
 
         public void load_content(){
-            /*new GLib.Thread<void*>("file-processor", () => {
+            new GLib.Thread<void*>("load-contents", () => {
                 var a = file.get_content (true);
-                file_text_view.set_text (a);
+                Idle.add (()=>{
+                    file_text_view.set_text (a);
+                    return false;
+                });
                 return null;
-            });*/
-            var a = file.get_content (true);
-            file_text_view.set_text (a);
+            });
         }
 
     }

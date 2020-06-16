@@ -11,21 +11,13 @@ namespace GtkGistManager {
 
         public MyProfile profile;
 
-        public signal void create ();
-        public signal void edited ();
-        public signal void clicked ();
-        public signal void unclicked ();
+        public signal void edited (Gist gist);
 
         public MyProfileView(MyProfile profile){
             this.profile = profile;
             editable = true;
 
-            create.connect (()=>{
-                print("create signal");
-            });
-
 		    page_switcher = new PageSwitcher ();
-		    page_switcher.show_all ();
         }
 
         public Gist[] list_all () {
@@ -47,21 +39,18 @@ namespace GtkGistManager {
             foreach(Gist gist in gists){
                 var gist_view = new GistView(gist, true);
                 gist_view.edited.connect ((source, gist) => {
-                    profile.edit (gist);
-                    edited ();
+                    edited (gist);
                 });
 
                 page_switcher.add_page (gist_view, gist.name, gist.id);
 
                 page_switcher.pages.notify["visible-child-name"].connect ((sender, property) => {
-                    clicked ();
                     if (gist.id == page_switcher.pages.get_visible_child_name ()) {
                         GistView wid = (GistView) page_switcher.pages.get_child_by_name(gist.id);
                         foreach(FileView file_v in wid.file_view){
                             file_v.load_content ();
                         }
                     }
-                    unclicked ();
                 });
             }
         }

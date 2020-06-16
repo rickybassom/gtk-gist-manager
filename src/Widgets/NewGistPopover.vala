@@ -37,8 +37,6 @@ namespace GtkGistManager {
             new_gist_wid.edited.connect ((source, gist) => {
                 create_gist(gist);
                 this.hide();
-                // refresh ();
-                // show_all ();
             });
 
             layout_box.pack_start (new_gist_wid, true, true, 6);
