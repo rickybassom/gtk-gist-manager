@@ -20,7 +20,7 @@ namespace GtkGistManager {
                 application: application,
                 icon_name: "com.github.rickybas.gtk-gist-manager",
                 resizable: true,
-                title: _("Gtk Gist Manager"),
+                title: _("Code Snippets"),
                 width_request: 1000,
                 height_request: 600
             );

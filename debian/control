@@ -13,4 +13,4 @@ Package: com.github.rickybas.gtk-gist-manager
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: A Gist manager written for linux
- Create and view code snippets for easy access and store them in the cloud.
+ Create, edit and view code snippets for easy access and store them in the cloud.

@@ -1,5 +1,5 @@
-# gtk-gist-manager
-Gtk Gist viewer and creator
+# Code Snippets (codename: gtk-gist-manager)
+Create, edit and view code snippets for easy access and store them in the cloud.
 
 ![](data/screenshot.png "Screenshot")
 
@@ -37,5 +37,4 @@ flatpak-builder build-dir com.github.rickybas.gtk-gist-manager.json
 ```sh
 flatpak-builder --run build-dir com.github.rickybas.gtk-gist-manager.json com.github.rickybas.gtk-gist-manager
 ```
-
 
