@@ -5,7 +5,7 @@
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Code Snippets</name>
-    <summary>Create, edit and view code snippets for easy access and store them in the cloud.</summary>
+    <summary>Create, edit and view code snippets and store them in the cloud using GitHub Gists.</summary>
     <description>
         <ul>
             <li>Login with a Github token</li>
@@ -29,7 +29,7 @@
         <value key="x-appcenter-suggested-price">5</value>
     </custom>
     <releases>
-      <release version="0.1.0" date="2020-06-18">
+      <release version="0.1.0" date="2020-06-22">
         <description>
           <p>Initial Release.</p>
         </description>

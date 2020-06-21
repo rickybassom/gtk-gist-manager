@@ -199,8 +199,10 @@ namespace GtkGistManager {
                     return;
                 }
 
+                // edit
                 gist.edit_description (get_description());
 
+                // update gist from file_view
                 int count = 0;
                 foreach(FileView file_v in file_view){
                     gist.files[count].edit_filename (file_v.get_name ());
@@ -208,6 +210,7 @@ namespace GtkGistManager {
                     count += 1;
                 }
 
+                // remove files that have been removed from file_view
                 GLib.Array<ValaGist.GistFile> files_to_remove = new GLib.Array<ValaGist.GistFile> ();
                 foreach(ValaGist.GistFile org_file in orginal_gist_files){
                     bool found = false;

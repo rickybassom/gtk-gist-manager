@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Code Snippets
 GenericName=Code Snippets
-Comment=Gtk Gist viewerm editor and creator
+Comment=Gtk Gist viewer, editor and creator
 Categories=GTK;Utility;
 Exec=com.github.rickybas.gtk-gist-manager
 Icon=com.github.rickybas.gtk-gist-manager
