@@ -190,7 +190,6 @@ namespace GtkGistManager {
                 ThreadFunc<bool> run = () => {
                     GLib.Array<GistFile> files_to_delete_array = new GLib.Array<GistFile> ();
                     files_to_delete_array.data = files_to_delete;
-                    print ("herer");
                     my_profile.edit (gist, files_to_delete_array);
 
                     Idle.add (()=>{
@@ -201,6 +200,33 @@ namespace GtkGistManager {
                 };
                 new Thread<bool>("edit-gist", run);
 
+            });
+
+            my_profile_view_inner.delete_gist.connect ((source, gist) => {
+                var are_you_sure_dialog = new Gtk.MessageDialog (
+                    this,
+                    0,
+                    Gtk.MessageType.QUESTION,
+                    Gtk.ButtonsType.OK_CANCEL,
+                    "Are you sure you want to delete this gist?"
+                );
+
+                var response = are_you_sure_dialog.run();
+                are_you_sure_dialog.destroy();
+
+                if (response == Gtk.ResponseType.OK) {
+                    switch_to_loading_view ();
+                    ThreadFunc<bool> run = () => {
+                        my_profile.delete (gist);
+
+                        Idle.add (()=>{
+                            switch_to_my_profile_view ();
+                            return false;
+                        });
+                        return false;
+                    };
+                    new Thread<bool>("delete-gist", run);
+                }
             });
 
             my_profile_view_inner.failed_edit.connect ((source, failed_message) => {

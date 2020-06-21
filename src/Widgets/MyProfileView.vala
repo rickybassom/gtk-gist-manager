@@ -13,6 +13,7 @@ namespace GtkGistManager {
 
         public signal void edited (Gist gist, GistFile[] files_to_delete);
         public signal void failed_edit (string message);
+        public signal void delete_gist (Gist gist);
 
         public MyProfileView(MyProfile profile){
             this.profile = profile;
@@ -54,13 +55,19 @@ namespace GtkGistManager {
                     }
                 });
 
+                gist_view.delete_gist.connect (() => {
+                    delete_gist (gist);
+                });
+
                 page_switcher.add_page (gist_view, gist.name, gist.id);
 
                 page_switcher.pages.notify["visible-child-name"].connect ((sender, property) => {
                     if (gist.id == page_switcher.pages.get_visible_child_name ()) {
                         GistView wid = (GistView) page_switcher.pages.get_child_by_name(gist.id);
-                        foreach(FileView file_v in wid.file_view){
-                            file_v.load_content ();
+                        if (!wid.is_editable) {
+                            foreach(FileView file_v in wid.file_view){
+                                file_v.load_content ();
+                            }
                         }
                     }
                 });

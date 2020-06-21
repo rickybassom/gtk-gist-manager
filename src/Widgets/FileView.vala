@@ -7,6 +7,7 @@ namespace GtkGistManager {
         public GistFile file;
         public FileTextView file_text_view;
         private Gtk.Entry name_entry;
+        private Gtk.Button delete_file_button;
 
         public string orginal_filename;
         public string orginal_content;
@@ -36,9 +37,7 @@ namespace GtkGistManager {
 
         public void reset() {
             name_entry.set_text (orginal_filename);
-            print ("herrrrrrrrrr");
             if (orginal_content != null) {
-                print ("here---------------------" + orginal_content);
                 file_text_view.set_text (orginal_content);
             }
         }
