@@ -11,7 +11,7 @@ namespace GtkGistManager {
 
         public MyProfile profile;
 
-        public signal void edited (Gist gist, GistFile[] files_to_delete);
+        public signal void edited (Gist gist, GLib.Array<ValaGist.GistFile> files_to_delete);
         public signal void failed_edit (string message);
         public signal void delete_gist (Gist gist);
 
@@ -50,7 +50,6 @@ namespace GtkGistManager {
 
                 gist_view.cancelled_edit.connect ((source) => {
                     foreach(FileView file_v in source.file_view){
-                        print ("1");
                         file_v.load_content ();
                     }
                 });

@@ -188,9 +188,7 @@ namespace GtkGistManager {
             my_profile_view_inner.edited.connect ((source, gist, files_to_delete) => {
                 switch_to_loading_view ();
                 ThreadFunc<bool> run = () => {
-                    GLib.Array<GistFile> files_to_delete_array = new GLib.Array<GistFile> ();
-                    files_to_delete_array.data = files_to_delete;
-                    my_profile.edit (gist, files_to_delete_array);
+                    my_profile.edit (gist, files_to_delete);
 
                     Idle.add (()=>{
                         switch_to_my_profile_view ();

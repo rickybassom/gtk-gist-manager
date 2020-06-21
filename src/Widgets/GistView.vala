@@ -6,7 +6,7 @@ namespace GtkGistManager {
         public FileView[] file_view = {};
 
         public bool is_editable;
-        public signal void edited (ValaGist.Gist gist, ValaGist.GistFile[] files_to_delete = {});
+        public signal void edited (ValaGist.Gist gist, GLib.Array<ValaGist.GistFile> files_to_remove = new GLib.Array<ValaGist.GistFile>());
         public signal void failed_edit (string message);
         public signal void cancelled_edit ();
         public signal void delete_gist ();
@@ -63,7 +63,21 @@ namespace GtkGistManager {
             add_file_button.clicked.connect(() =>{
                 var new_file = new ValaGist.GistFile ("newfile.txt", "", false);
                 gist.add_file (new_file);
-                file_view += new FileView (new_file);
+                FileView new_view = new FileView (new_file);
+                file_view += new_view;
+                new_view.delete_file.connect ((source) => {
+                    scroll_files_box.remove (new_view);
+                    GenericArray<FileView> new_file_views = new GenericArray<FileView>();
+                    new_file_views.data = file_view;
+                    new_file_views.remove (source);
+                    file_view = new_file_views.data;
+
+                    GenericArray<ValaGist.GistFile> new_files = new GenericArray<ValaGist.GistFile>();
+                    new_files.data = gist.files;
+                    new_files.remove (new_file);
+                    gist.replace_with_files (new_files.data);
+                });
+
                 file_view[file_view.length - 1].toggle_editable ();
                 scroll_files_box.pack_start(file_view[file_view.length - 1]);
                 show_all ();
@@ -104,14 +118,18 @@ namespace GtkGistManager {
         }
 
         public string check_edit () {
+            if (file_view.length == 0) {
+                return "Gist must have more than one file";
+            }
+
             string[] filenames = {};
             foreach (FileView file_v in file_view) {
                 if (file_v.get_content () == "") {
-                    return "All files must be not empty";
+                    return "All files must be not be empty";
                 }
 
                 if (file_v.get_name () in filenames) {
-                    return "Repeated filenames";
+                    return "Repeated filenames are not allowed";
                 }
 
                 filenames += file_v.get_name ();
@@ -190,7 +208,30 @@ namespace GtkGistManager {
                     count += 1;
                 }
 
-                edited (gist);
+                GLib.Array<ValaGist.GistFile> files_to_remove = new GLib.Array<ValaGist.GistFile> ();
+                foreach(ValaGist.GistFile org_file in orginal_gist_files){
+                    bool found = false;
+                    foreach(ValaGist.GistFile file in gist.files){
+                        if (file == org_file) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    bool file_view_with_same_filename = false;
+                    foreach(FileView file_v in file_view){
+                        if (file_v.get_name () == org_file.filename) {
+                            file_view_with_same_filename = true;
+                            break;
+                        }
+                    }
+
+                    if (!found && !file_view_with_same_filename) {
+                        files_to_remove.append_val (org_file);
+                    }
+                }
+
+                edited (gist, files_to_remove);
 
             }
 
@@ -211,8 +252,22 @@ namespace GtkGistManager {
 
         private void set_files(ValaGist.Gist gist){
             foreach(ValaGist.GistFile file in gist.files){
-                file_view += new FileView(file);
-                scroll_files_box.pack_start(file_view[file_view.length - 1]);
+                FileView new_view = new FileView(file);
+                file_view += new_view;
+                new_view.delete_file.connect ((source) => {
+                    scroll_files_box.remove (new_view);
+                    GenericArray<FileView> new_file_views = new GenericArray<FileView>();
+                    new_file_views.data = file_view;
+                    new_file_views.remove (source);
+                    file_view = new_file_views.data;
+
+                    GenericArray<ValaGist.GistFile> new_files = new GenericArray<ValaGist.GistFile>();
+                    new_files.data = gist.files;
+                    new_files.remove (file);
+                    gist.replace_with_files (new_files.data);
+                });
+
+                scroll_files_box.pack_start(new_view);
             }
         }
 
