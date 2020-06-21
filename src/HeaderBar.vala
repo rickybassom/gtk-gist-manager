@@ -15,6 +15,7 @@ namespace GtkGistManager {
         public signal void logout_clicked ();
         public signal void new_button_clicked ();
         public signal void new_gist (ValaGist.Gist new_gist);
+        public signal void failed_edit (string message);
 
         public HeaderBar (MainWindow window) {
             this.show_close_button = true;
@@ -26,6 +27,9 @@ namespace GtkGistManager {
             new_gist_popover.set_visible (false);
             new_gist_popover.create_gist.connect ((source, gist) => {
                 new_gist (gist);
+            });
+            new_gist_popover.failed_edit.connect ((source, message) => {
+                failed_edit (message);
             });
 
             new_button.clicked.connect (() => {

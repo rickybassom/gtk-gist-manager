@@ -39,6 +39,10 @@ namespace GtkGistManager {
                 refresh_gists ();
             });
 
+            headerbar.failed_edit.connect ((source, mess) => {
+                message (mess);
+            });
+
             headerbar.new_button_clicked.connect (() => {
                 if (my_profile == null) {
                     Utils.log_warning ("Account details not entered");
@@ -181,10 +185,13 @@ namespace GtkGistManager {
             my_profile_view_inner = new MyProfileView(my_profile);
             my_profile_view.forall ((element) => my_profile_view.remove (element));
             my_profile_view.add (my_profile_view_inner.page_switcher);
-            my_profile_view_inner.edited.connect ((source, gist) => {
+            my_profile_view_inner.edited.connect ((source, gist, files_to_delete) => {
                 switch_to_loading_view ();
                 ThreadFunc<bool> run = () => {
-                    my_profile.edit (gist);
+                    GLib.Array<GistFile> files_to_delete_array = new GLib.Array<GistFile> ();
+                    files_to_delete_array.data = files_to_delete;
+                    print ("herer");
+                    my_profile.edit (gist, files_to_delete_array);
 
                     Idle.add (()=>{
                         switch_to_my_profile_view ();
@@ -194,6 +201,10 @@ namespace GtkGistManager {
                 };
                 new Thread<bool>("edit-gist", run);
 
+            });
+
+            my_profile_view_inner.failed_edit.connect ((source, failed_message) => {
+                message (failed_message);
             });
 
             if (my_profile == null) {

@@ -11,7 +11,8 @@ namespace GtkGistManager {
 
         public MyProfile profile;
 
-        public signal void edited (Gist gist);
+        public signal void edited (Gist gist, GistFile[] files_to_delete);
+        public signal void failed_edit (string message);
 
         public MyProfileView(MyProfile profile){
             this.profile = profile;
@@ -38,8 +39,19 @@ namespace GtkGistManager {
         private void set_gists_widgets(Gist[] gists){
             foreach(Gist gist in gists){
                 var gist_view = new GistView(gist, true);
-                gist_view.edited.connect ((source, gist) => {
-                    edited (gist);
+                gist_view.edited.connect ((source, gist, files_to_delete) => {
+                    edited (gist, files_to_delete);
+                });
+
+                gist_view.failed_edit.connect ((source, message) => {
+                    failed_edit (message);
+                });
+
+                gist_view.cancelled_edit.connect ((source) => {
+                    foreach(FileView file_v in source.file_view){
+                        print ("1");
+                        file_v.load_content ();
+                    }
                 });
 
                 page_switcher.add_page (gist_view, gist.name, gist.id);
