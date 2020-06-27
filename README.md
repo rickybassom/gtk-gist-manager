@@ -1,5 +1,5 @@
 # Code Snippets (codename: gtk-gist-manager)
-[![Build Status](https://travis-ci.org/rickybas/date-countdown.svg?branch=master)](https://travis-ci.org/rickybas/date-countdown)
+[![Build Status](https://travis-ci.org/rickybas/gtk-gist-manager.svg?branch=master)](https://travis-ci.org/rickybas/gtk-gist-manager)
 
 Create, view and edit code snippets fetched from Github Gists.
 
@@ -12,7 +12,7 @@ These dependencies must be present before building
 - `meson>=0.40.1`
 - `valagist-1.0` ([found here](https://github.com/rickybas/vala-gist))
 - `gtk+-3.0`
-- `gtksourceview-3.0>=3.10`
+- `gtksourceview-3.0`
 - `libsecret-1`
 
 ## Installation
