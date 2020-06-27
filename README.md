@@ -1,5 +1,5 @@
 # Code Snippets (codename: gtk-gist-manager)
-[![Build Status](https://travis-ci.org/rickybas/gtk-gist-manager.svg?branch=master)](https://travis-ci.org/rickybas/gtk-gist-manager)
+[![Build Status](https://travis-ci.com/rickybas/gtk-gist-manager.svg?branch=master)](https://travis-ci.com/rickybas/gtk-gist-manager)
 
 Create, view and edit code snippets fetched from Github Gists.
 
