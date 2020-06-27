@@ -21,6 +21,7 @@ namespace GtkGistManager {
             this.show_close_button = true;
 
             new_button = new Gtk.Button.with_label ("New");
+            new_button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             new_button.set_sensitive (false);
 
             new_gist_popover = new NewGistPopover (new_button);
