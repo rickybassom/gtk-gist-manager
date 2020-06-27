@@ -9,7 +9,7 @@ Build-Depends: meson,
                libgtksourceview-3.0-dev,
                libsecret-1-dev,
                libjson-glib-dev,
-               libsoup-gnome2.4-dev
+               libsoup-gnome2.4-dev,
                valac (>= 0.26)
 Standards-Version: 3.9.3
 
