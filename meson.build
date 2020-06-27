@@ -15,11 +15,11 @@ asresources = gnome.compile_resources(
 
 add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')], language: 'vala')
 
-glib = dependency('glib-2.0', version: '>=2.32')
-gobject = dependency('gobject-2.0', version: '>=2.32')
-gio = dependency('gio-2.0', version: '>=2.32')
+glib = dependency('glib-2.0')
+gobject = dependency('gobject-2.0')
+gio = dependency('gio-2.0')
 gtk = dependency('gtk+-3.0')
-gtksourceview = dependency('gtksourceview-3.0', version: '>=3.10')
+gtksourceview = dependency('gtksourceview-3.0')
 libsecret = dependency('libsecret-1')
 
 valagist = dependency('valagist-1.0')

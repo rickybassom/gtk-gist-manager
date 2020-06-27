@@ -1,5 +1,7 @@
 # Code Snippets (codename: gtk-gist-manager)
-Create, edit and view code snippets for easy access and store them in the cloud.
+[![Build Status](https://travis-ci.org/rickybas/date-countdown.svg?branch=master)](https://travis-ci.org/rickybas/date-countdown)
+
+Create, view and edit code snippets fetched from Github Gists.
 
 ![](data/screenshot.png "Screenshot")
 
