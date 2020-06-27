@@ -35,7 +35,7 @@ executable(meson.project_name(),
            sources,
            asresources,
            c_args: c_args,
-           dependencies: [glib, gobject, gio, gtk, gtksourceview, libsecret, valagist, m_dep],
+           dependencies: deps + [m_dep],
            install: true)
 
 meson.add_install_script('../meson/post_install.py')

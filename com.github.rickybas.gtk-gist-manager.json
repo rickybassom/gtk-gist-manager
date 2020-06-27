@@ -15,16 +15,6 @@
     ],
     "modules" : [
         {
-            "name" : "vala-gist",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://github.com/rickybas/vala-gist.git"
-                }
-            ]
-        },
-        {
             "name" : "gtksourceview",
             "sources" : [
                 {
@@ -38,10 +28,13 @@
             "name" : "gtk-gist-manager",
             "buildsystem" : "meson",
             "builddir" : true,
-            "sources" : [
+            "config-opts" : [
+                "--wrap-mode=nodownload"
+            ],
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/rickybas/gtk-gist-manager.git"
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }

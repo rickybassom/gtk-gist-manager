@@ -1,9 +1,0 @@
-[default-2]
-name=Default (Copy)
-runtime=host
-config-opts=
-run-opts=
-prefix=/home/ricky/.cache/gnome-builder/install/Code-Snippets/host
-app-id=
-postbuild=
-prebuild=

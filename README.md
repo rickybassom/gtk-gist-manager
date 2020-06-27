@@ -31,6 +31,7 @@ sudo ninja install
 ### Build
 
 ```sh
+meson build
 flatpak-builder build-dir com.github.rickybas.gtk-gist-manager.json
 ```
 
