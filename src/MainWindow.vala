@@ -147,18 +147,21 @@ namespace GtkGistManager {
 
         public void message(string text) {
             Utils.log_warning (text);
-            var dialog = new Gtk.MessageDialog (
-                this,
-                0,
-                Gtk.MessageType.INFO,
-                Gtk.ButtonsType.OK,
-                text
-            );
+            Idle.add (()=>{
+                var dialog = new Gtk.MessageDialog (
+                    this,
+                    0,
+                    Gtk.MessageType.INFO,
+                    Gtk.ButtonsType.OK,
+                    text
+                );
 
-            dialog.format_secondary_text (text);
-            dialog.run ();
+                dialog.format_secondary_text (text);
+                dialog.run ();
 
-            dialog.destroy ();
+                dialog.destroy ();
+                return false;
+            });
         }
 
         public void refresh_gists () {
