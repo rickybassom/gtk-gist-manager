@@ -17,7 +17,7 @@ glib = dependency('glib-2.0', version: '>=2.32')
 gobject = dependency('gobject-2.0', version: '>=2.32')
 gio = dependency('gio-2.0', version: '>=2.32')
 gtk = dependency('gtk+-3.0')
-gtksourceview = dependency('gtksourceview-3.0', version: '>=3.10')
+gtksourceview = dependency('gtksourceview-3.0')
 libsecret = dependency('libsecret-1')
 
 valagist_proj = subproject('vala-gist')
