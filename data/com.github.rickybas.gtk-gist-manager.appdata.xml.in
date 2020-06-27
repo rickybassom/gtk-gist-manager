@@ -26,10 +26,10 @@
     <custom>
         <value key="x-appcenter-color-primary">#f5f5f5</value>
         <value key="x-appcenter-color-primary-text">#3a9104ff</value>
-        <value key="x-appcenter-suggested-price">5</value>
+        <value key="x-appcenter-suggested-price">8</value>
     </custom>
     <releases>
-      <release version="0.1.0" date="2020-06-22">
+      <release version="0.1.0" date="2020-06-27">
         <description>
           <p>Initial Release.</p>
         </description>
