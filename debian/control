@@ -10,6 +10,7 @@ Build-Depends: meson,
                libsecret-1-dev,
                libjson-glib-dev,
                libsoup-gnome2.4-dev,
+               git,
                valac (>= 0.26)
 Standards-Version: 3.9.3
 
