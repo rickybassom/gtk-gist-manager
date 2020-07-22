@@ -4,7 +4,7 @@
     <shortdesc xml:lang="en">Create, edit and view code snippets and store them in the cloud.</shortdesc>
     <programming-language>Vala</programming-language>
     <category rdf:resource="http://api.gnome.org/doap-extensions#apps"/>
-    <homepage rdf:resource="https://github.com/rickybas/gtk-gist-manager"/>
-    <download-page rdf:resource="https://github.com/rickybas/gtk-gist-manager/releases"/>
-    <bug-database rdf:resource="https://github.com/rickybas/gtk-gist-manager/issues"/>
+    <homepage rdf:resource="https://github.com/rickybassom/gtk-gist-manager"/>
+    <download-page rdf:resource="https://github.com/rickybassom/gtk-gist-manager/releases"/>
+    <bug-database rdf:resource="https://github.com/rickybassom/gtk-gist-manager/issues"/>
 </Project>

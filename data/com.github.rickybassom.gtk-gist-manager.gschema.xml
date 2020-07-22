@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema path="/com/github/rickybas/gtk-gist-manager/"
-  id="com.github.rickybas.gtk-gist-manager"
-  gettext-domain="com.github.rickybas.gtk-gist-manager">
+  <schema path="/com/github/rickybassom/gtk-gist-manager/"
+  id="com.github.rickybassom.gtk-gist-manager"
+  gettext-domain="com.github.rickybassom.gtk-gist-manager">
     <key name="token" type="s">
       <default>""</default>
       <summary>Github api token</summary>

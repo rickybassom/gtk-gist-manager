@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2020 Ricky Bassom <https://github.com/rickybas> -->
+<!-- Copyright 2020 Ricky Bassom <https://github.com/rickybassom> -->
 <component type="desktop-application">
-    <id>com.github.rickybas.gtk-gist-manager</id>
+    <id>com.github.rickybassom.gtk-gist-manager</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Code Snippets</name>
@@ -13,16 +13,16 @@
         </ul>
     </description>
     <provides>
-        <binary>com.github.rickybas.gtk-gist-manager</binary>
+        <binary>com.github.rickybassom.gtk-gist-manager</binary>
     </provides>
     <screenshots>
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/rickybas/gtk-gist-manager/master/data/screenshot.png</image>
+            <image>https://raw.githubusercontent.com/rickybassom/gtk-gist-manager/master/data/screenshot.png</image>
         </screenshot>
     </screenshots>
     <developer_name>Ricky Bassom</developer_name>
-    <url type="homepage">https://github.com/rickybas/gtk-gist-manager</url>
-    <url type="bugtracker">https://github.com/rickybas/gtk-gist-manager/issues</url>
+    <url type="homepage">https://github.com/rickybassom/gtk-gist-manager</url>
+    <url type="bugtracker">https://github.com/rickybassom/gtk-gist-manager/issues</url>
     <custom>
         <value key="x-appcenter-color-primary">#f5f5f5</value>
         <value key="x-appcenter-color-primary-text">#3a9104ff</value>

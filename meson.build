@@ -1,4 +1,4 @@
-project('com.github.rickybas.gtk-gist-manager', ['vala', 'c'],
+project('com.github.rickybassom.gtk-gist-manager', ['vala', 'c'],
         version: '0.1',
         license: 'GNU')
 
