@@ -1,0 +1,3 @@
+[submodule "subprojects/vala-gist"]
+	path = subprojects/vala-gist
+	url = https://github.com/rickybassom/vala-gist
