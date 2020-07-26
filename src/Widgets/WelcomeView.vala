@@ -25,7 +25,7 @@ class WelcomeView : Gtk.Box {
         help_button = new Gtk.Button.with_label("How to generate a token");
         help_button.margin = 10;
         help_button.clicked.connect(() =>{
-            Gtk.show_uri_on_window(null, "https://github.com/rickybas/gtk-gist-manager/wiki/How-to-generate-a-token-for-gtk-gist-manager",
+            Gtk.show_uri_on_window(null, "https://github.com/rickybassom/gtk-gist-manager/wiki/How-to-generate-a-GitHub-Gist-token-for-Code-Snippets-(gtk-gist-manager)",
                            Gdk.CURRENT_TIME);
         });
 
