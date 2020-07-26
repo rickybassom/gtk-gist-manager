@@ -18,7 +18,7 @@ namespace GtkGistManager {
         public MainWindow(Gtk.Application application) {
             Object (
                 application: application,
-                icon_name: "com.github.rickybas.gtk-gist-manager",
+                icon_name: "com.github.rickybassom.gtk-gist-manager",
                 resizable: true,
                 title: _("Code Snippets"),
                 width_request: 1000,

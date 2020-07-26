@@ -34,7 +34,7 @@ namespace GtkGistManager {
             window = new MainWindow(this);
 
             var provider = new Gtk.CssProvider ();
-            provider.load_from_resource ("com/github/rickybas/gtk-gist-manager/Application.css");
+            provider.load_from_resource ("com/github/rickybassom/gtk-gist-manager/Application.css");
             print (provider.to_string());
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
