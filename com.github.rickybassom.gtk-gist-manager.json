@@ -31,10 +31,10 @@
             "config-opts" : [
                 "--wrap-mode=nodownload"
             ],
-            "sources": [
+            "sources" : [
                 {
-                    "type": "dir",
-                    "path": "."
+                    "type" : "dir",
+                    "path" : "."
                 }
             ]
         }

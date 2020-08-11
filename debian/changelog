@@ -1,3 +1,9 @@
+com.github.rickybassom.gtk-gist-manager (0.1.1) xenial; urgency=low
+
+  * Appdata information fix
+
+ -- Ricky Bassom <rickybas12@gmail.com>  Tue, 11 Aug 2020 13:09:00 -0800
+
 com.github.rickybassom.gtk-gist-manager (0.1.0) xenial; urgency=low
 
   * Initial Release.

@@ -5,11 +5,12 @@
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Code Snippets</name>
-    <summary>Create, edit and view code snippets and store them in the cloud using GitHub Gists.</summary>
+    <summary>A notebook for programmers</summary>
     <description>
+        <p>Create, edit and easily view code snippets and store them in the cloud using GitHub Gists.</p>
         <ul>
             <li>Login with a Github token</li>
-            <li>Create, view and edit code snippets fetched from Github Gists</li>
+            <li>Create, edit and view code snippets fetched from Github Gists</li>
         </ul>
     </description>
     <provides>
@@ -24,11 +25,16 @@
     <url type="homepage">https://github.com/rickybassom/gtk-gist-manager</url>
     <url type="bugtracker">https://github.com/rickybassom/gtk-gist-manager/issues</url>
     <custom>
-        <value key="x-appcenter-color-primary">#f5f5f5</value>
-        <value key="x-appcenter-color-primary-text">#3a9104ff</value>
+        <value key="x-appcenter-color-primary">#333333</value>
+        <value key="x-appcenter-color-primary-text">#d4d4d4</value>
         <value key="x-appcenter-suggested-price">8</value>
     </custom>
     <releases>
+      <release version="0.1.1" date="2020-08-11">
+        <description>
+          <p>Appdata information fix</p>
+        </description>
+      </release>
       <release version="0.1.0" date="2020-06-27">
         <description>
           <p>Initial Release.</p>
