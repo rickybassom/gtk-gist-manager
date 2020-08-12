@@ -26,9 +26,10 @@ sudo ninja install
 ```
 
 ## Debain build
-`dpkg-buildpackage -us -uc`
-
-`sudo dpkg -i com.github.rickybassom.gtk-gist-manager_0.1.1_amd64.deb (or the equivalent)`
+```sh
+dpkg-buildpackage -us -uc
+sudo dpkg -i com.github.rickybassom.gtk-gist-manager_0.1.1_amd64.deb (or the equivalent)
+```
 
 ## Flatpak
 (currently without a repo)
