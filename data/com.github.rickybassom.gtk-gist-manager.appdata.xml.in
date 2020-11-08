@@ -14,7 +14,7 @@
         </ul>
     </description>
     <provides>
-        <binary>com.github.rickybassom.gtk-gist-manager</binary>
+        <binary>com.github.rickybas.gtk-gist-manager</binary>
     </provides>
     <screenshots>
         <screenshot type="default">
