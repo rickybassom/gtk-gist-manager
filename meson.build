@@ -1,5 +1,5 @@
 project('com.github.rickybassom.gtk-gist-manager', ['vala', 'c'],
-        version: '0.1.1',
+        version: '0.1.2',
         license: 'GNU')
 
 gnome = import('gnome')
